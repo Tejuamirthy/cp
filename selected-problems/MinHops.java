@@ -5,6 +5,14 @@ public class MinHops {
     public static void main(String args[]) {
         int n = 6;
         
+        /*
+        
+            Given two words - beginning word and end word
+            And a list of words which provides the path to convert beginning word into end word.
+            In every step, you can change a letter of the beginning word and that hop is valid if the new string is present in the list
+        
+        */
+        
         String beginString = "git", endString = "gog";
 
         String[] stringArray = {

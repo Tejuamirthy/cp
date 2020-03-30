@@ -26,6 +26,27 @@ public class HalfSumSubset {
 		return dp[k/2];
 	}
 
+	// another approach for the same solution
+	public static boolean isSubsetPossible(int[] arr, int k) {
+	     int n = arr.length;
+	     boolean[][] dp = new boolean[2][k+1];
+	     
+	     for(int i = 0; i <= n; i++) {
+	         for(int j = 0; j <= k; j++) {
+	             if(j == 0)
+	                dp[i%2][j] = true;
+	             else if( i == 0)
+	                dp[i%2][j] = false;
+	             else if(j >= arr[i-1])
+	                dp[i%2][j] = dp[(i+1)%2][j] || dp[(i+1)%2][j-arr[i-1]];
+	             else
+	                dp[i%2][j] = dp[(i+1)%2][j];
+	         }
+	     }
+	     
+	     return dp[n%2][k];
+	}
+	
 	static int min(int a, int b) {
 		return a <= b ? a : b; 
 	}

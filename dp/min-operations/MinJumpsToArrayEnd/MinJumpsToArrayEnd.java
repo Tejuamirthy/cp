@@ -13,11 +13,11 @@ class MinJumpsToArrayEnd
 	 
 	 public static int minJumps(int[] arr, int n) {
 		 // to store the min jumps required to reach each point
-		int[] dp = new int[n];
+		 // int[] dp = new int[n];
 		 // 	count - number of jumps
 		 //	from - jumping from index, currSteps - number of steps we can jump from index 'from'
 		 // 	maxIndex - next index from where we need to count jumps from
-		int from = 0, maxIndex = 0, currSteps = arr[0], count = 1;
+		int from = 0, maxIndex = 0, currSteps = arr[0], count = 1, result = -1;
 		for(int i = 1; i < n; i++) {
 		 if(currSteps == 0) {
 		     if(from == maxIndex)   return -1;
@@ -30,8 +30,10 @@ class MinJumpsToArrayEnd
 		 if(i + arr[i] > maxIndex + arr[maxIndex] && arr[i] != 0) {
 		     maxIndex = i;
 		 }
-		 dp[i] = count;
+		  if(i == n-1)
+		     result = count;
+		 // dp[i] = count;
 		}
-		return (dp[n-1] == 0) ? -1 : dp[n-1];
+		return (result != count) ? -1 : result;
 	 }
 }

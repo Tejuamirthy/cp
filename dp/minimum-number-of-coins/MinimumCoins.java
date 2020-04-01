@@ -13,9 +13,13 @@ public class MinimumCoins {
         for(int i = 0; i <= n; i++) {
             for(int j = 0; j < c; j++) {
                 if(arr[j] <= i && dp[i-arr[j]] != Integer.MAX_VALUE)
-                    dp[i] = Math.min(dp[i-arr[j]] + 1, dp[i]);
+                    dp[i] = min(dp[i-arr[j]] + 1, dp[i]);
             }
         }
         return dp[n] == Integer.MAX_VALUE ? -1 : dp[n];
+    }
+       
+    public static int min(int a, int b) {
+        return a <= b ? a : b;
     }
 }
